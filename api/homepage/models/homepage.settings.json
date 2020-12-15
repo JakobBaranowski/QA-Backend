@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "name": "homepage",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Description": {
+      "type": "text"
+    },
+    "Price_description": {
+      "type": "string"
+    },
+    "Price_1": {
+      "type": "integer"
+    },
+    "Price_2": {
+      "type": "integer"
+    }
+  }
+}

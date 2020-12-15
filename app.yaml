@@ -1,0 +1,16 @@
+runtime: nodejs10
+
+instance_class: F2
+
+service: backend
+
+env_variables:
+  HOST: '0.0.0.0'
+  NODE_ENV: 'production'
+  DATABASE_NAME: "${process.env.DATABASE_NAME}"
+  DATABASE_USERNAME: "${process.env.DATABASE_USERNAME}"
+  DATABASE_PASSWORD: "${process.env.DATABASE_PASSWORD}"
+  DATABASE_HOST: "${process.env.DATABASE_HOST}"
+  
+beta_settings:
+  cloud_sql_instances: ''
