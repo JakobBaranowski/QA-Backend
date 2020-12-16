@@ -12,12 +12,15 @@ module.exports = {
     /**
      * Create a record.
      *
-     * @return {Object}
+     * 
      */
 
     async create(ctx) {
         let entity;
         let order;
+        let homepage;
+        let email;
+        
         if (ctx.is('multipart')) {
             const { data, files } = parseMultipartData(ctx);
             entity = await strapi.services.orders.create(data, { files });
@@ -26,17 +29,19 @@ module.exports = {
         }
 
         order = sanitizeEntity(entity, { model: strapi.models.orders });
+        homepage = await strapi.services.homepage.find();
+        email = homepage.orderConfirmation;
 
         // send an email by using the email plugin
         await strapi.plugins['email'].services.email.send({
-            to: 'jakob@baranowski.cc',
+            to: `${email}`,
             from: 'admin@strapi.io',
             subject: `Quraralender - Neue Bestellung #${order.id}`,
-            text: ` Hallo!
-Soeben ist eine neue Bestellung eingetroffen! 
+            text: ` Hallo!<br/>
+Soeben ist eine neue Bestellung eingetroffen! <br/>
 
-Hier kannst du sie ansehen:
-https://backend-dot-quaralender-298309.nw.r.appspot.com/admin/plugins/content-manager/collectionType/application::orders.orders/${order.id}
+Hier kannst du sie ansehen:<br/>
+https://backend-dot-quaralender-298309.nw.r.appspot.com/admin/plugins/content-manager/collectionType/application::orders.orders/${order.id}<br/>
 
 Liebe Grüsse
         `,

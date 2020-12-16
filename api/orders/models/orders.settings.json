@@ -57,6 +57,9 @@
         "Shipped",
         "Paid"
       ]
+    },
+    "price": {
+      "type": "integer"
     }
   }
 }

@@ -11,17 +11,20 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Description": {
-      "type": "text"
-    },
-    "Price_description": {
-      "type": "string"
-    },
-    "Price_1": {
+    "price_1": {
       "type": "integer"
     },
-    "Price_2": {
+    "price_2": {
       "type": "integer"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "orderConfirmation": {
+      "type": "email"
+    },
+    "price_description": {
+      "type": "richtext"
     }
   }
 }
