@@ -60,6 +60,9 @@
     },
     "price": {
       "type": "integer"
+    },
+    "note": {
+      "type": "richtext"
     }
   }
 }
